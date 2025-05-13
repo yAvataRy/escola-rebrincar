@@ -3,13 +3,14 @@ import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
-
 import CoreuiVue from '@coreui/vue'
 import CIcon from '@coreui/icons-vue'
 import { iconsSet as icons } from '@/assets/icons'
 import DocsComponents from '@/components/DocsComponents'
 import DocsExample from '@/components/DocsExample'
 import DocsIcons from '@/components/DocsIcons'
+import '@/assets/tailwind.css'
+import '@/styles/style.scss'
 
 const app = createApp(App)
 app.use(createPinia())

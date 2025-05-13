@@ -17,7 +17,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <ImageCarousel />
+  
+  <ImageCarousel v-if="$route.path === '/'" />
 
   <header :class="headerClassNames">
     <div class="border-b px-4 py-2">
