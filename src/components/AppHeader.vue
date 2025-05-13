@@ -1,84 +1,102 @@
 <script setup>
 import { onMounted, ref } from 'vue'
-import { RouterLink } from 'vue-router'
+import { useColorModes } from '@coreui/vue'
+
+import AppBreadcrumb from '@/components/AppBreadcrumb.vue'
+import AppHeaderDropdownAccnt from '@/components/AppHeaderDropdownAccnt.vue'
+import { useSidebarStore } from '@/stores/sidebar.js'
 import ImageCarousel from '@/components/ImageCarousel.vue'
 
-const headerClassNames = ref('sticky top-0 bg-white z-50 transition-shadow')
+
+const headerClassNames = ref('mb-4 p-0')
+const { colorMode, setColorMode } = useColorModes('coreui-free-vue-admin-template-theme')
+const sidebar = useSidebarStore()
 
 onMounted(() => {
   document.addEventListener('scroll', () => {
     if (document.documentElement.scrollTop > 0) {
-      headerClassNames.value = 'sticky top-0 bg-white z-50 shadow-md transition-shadow'
+      headerClassNames.value = 'mb-4 p-0 shadow-sm'
     } else {
-      headerClassNames.value = 'sticky top-0 bg-white z-50 transition-shadow'
+      headerClassNames.value = 'mb-4 p-0'
     }
   })
 })
 </script>
 
 <template>
-  <ImageCarousel v-if="$route.path === '/dashboard'" />
+<ImageCarousel v-if="$route.path === '/dashboard'" />
 
-  <header :class="headerClassNames">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <RouterLink class="navbar-brand" to="/">Home</RouterLink>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <button
-                class="nav-link dropdown-toggle"
-                id="sobreDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Sobre
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="sobreDropdown">
-                <li>
-                  <RouterLink class="dropdown-item" to="/historia">Nossa História</RouterLink>
-                </li>
-                <li>
-                  <RouterLink class="dropdown-item" to="/espaco">Nosso Espaço</RouterLink>
-                </li>
-                <li>
-                  <RouterLink class="dropdown-item" to="/eventos">Eventos Anuais</RouterLink>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <RouterLink class="nav-link" to="/bercario">Berçário</RouterLink>
-            </li>
-            <li class="nav-item">
-              <RouterLink class="nav-link" to="/infantil">Educação Infantil</RouterLink>
-            </li>
-            <li class="nav-item">
-              <RouterLink class="nav-link" to="/fundamental">Educação Fundamental</RouterLink>
-            </li>
-            <li class="nav-item">
-              <RouterLink class="nav-link" to="/diferenciais">Diferenciais</RouterLink>
-            </li>
-            <li class="nav-item">
-              <RouterLink class="nav-link" to="/depoimentos">Depoimentos</RouterLink>
-            </li>
-            <li class="nav-item">
-              <RouterLink class="nav-link" to="/contato">Contato</RouterLink>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
+  <CHeader position="sticky" :class="headerClassNames">
+    <CContainer class="border-bottom px-4" fluid>
+      <CHeaderNav class="d-none d-md-flex">
+        <CNavItem>
+          <router-link class="router-link" to="/dashboard"> Home </router-link>
+        </CNavItem>
+        <CDropdown variant="nav-item" placement="bottom-end">
+          <CDropdownToggle class="router-link" :caret="false"> Sobre
+          </CDropdownToggle>
+          <CDropdownMenu>
+            <CDropdownItem>
+              <router-link class="router-link" to="/historia"> Nossa Historia </router-link>
+            </CDropdownItem>
+            <CDropdownItem>
+              <router-link class="router-link" to="/espaco"> Nosso Espaço</router-link>
+            </CDropdownItem>
+            <CDropdownItem>
+              <router-link class="router-link" to="/eventos"> Eventos Anuais </router-link>
+            </CDropdownItem>
+          </CDropdownMenu>
+        </CDropdown>
+        <CNavItem>
+          <router-link class="router-link" to="/bercario">Berçário</router-link>
+        </CNavItem>
+        <CNavItem>
+          <router-link class="router-link" to="/infantil">Educação Infantil</router-link>
+        </CNavItem>
+        <CNavItem>
+          <router-link class="router-link" to="/fundamental">Educação Fundamental</router-link>
+        </CNavItem>
+        <CNavItem>
+          <router-link class="router-link" to="/diferenciais">Diferenciais</router-link>
+        </CNavItem>
+        <CNavItem>
+          <router-link class="router-link" to="/depoimentos">Depoimentos</router-link>
+        </CNavItem>
+        <CNavItem>
+          <router-link class="router-link" to="/contato">Contato</router-link>
+        </CNavItem>
+      </CHeaderNav>
+      <CHeaderNav>        
+      </CHeaderNav>
+    </CContainer>
+    <!-- <CContainer class="px-4" fluid>
+      <AppBreadcrumb />
+    </CContainer> -->
+  </CHeader>
 </template>
+
+<style scoped>
+.router-link {
+  text-decoration: none;
+  color: inherit;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.router-link:hover {
+  text-decoration: none;
+  color: greenyellow
+}
+.router-link:active {
+  text-decoration: none;
+}
+
+</style>
+
+to="/bercario">Berçário
+to="/infantil">Educação
+to="/fundamental">Educação
+to="/diferenciais">Diferenciais
+to="/depoimentos">Depoimentos
+to="/contato">Contato

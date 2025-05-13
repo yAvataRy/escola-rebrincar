@@ -1,72 +1,63 @@
 <script setup>
 import { ref } from 'vue'
+import {
+  CCarousel,
+  CCarouselItem,
+  CCarouselCaption,
+} from '@coreui/vue'
 
 const images = [
-  { src: new URL('@/assets/images/image1.png', import.meta.url).href, alt: 'Imagem 1' },
-  { src: new URL('@/assets/images/image2.png', import.meta.url).href, alt: 'Imagem 2' },
-  { src: new URL('@/assets/images/image3.png', import.meta.url).href, alt: 'Imagem 3' },
-  { src: new URL('@/assets/images/image4.png', import.meta.url).href, alt: 'Imagem 4' },
+  { src: new URL('@/assets/images/image1.jpeg', import.meta.url).href, alt: 'Descrição Imagem 1' },
+  { src: new URL('@/assets/images/image2.jpeg', import.meta.url).href, alt: 'Descrição Imagem 2' },
+  { src: new URL('@/assets/images/image3.jpeg', import.meta.url).href, alt: 'Descrição Imagem 3' },
+  { src: new URL('@/assets/images/image4.jpeg', import.meta.url).href, alt: 'Descrição Imagem 4' },
 ]
 
 const currentIndex = ref(0)
 
-const next = () => {
-  currentIndex.value = (currentIndex.value + 1) % images.length
-}
-
-const prev = () => {
-  currentIndex.value = (currentIndex.value - 1 + images.length) % images.length
+const onSlide = (index) => {
+  currentIndex.value = index
 }
 </script>
 
 <template>
-  <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-  <!-- Indicadores -->
-  <div class="carousel-indicators">
-    <button
-    v-for="(img, index) in images"
-    :key="index"
-    type="button"
-    :data-bs-target="'#carouselExample'"
-    :data-bs-slide-to="index"
-    :class="{ active: currentIndex === index }"
-    aria-current="currentIndex === index ? 'true' : undefined"
-    aria-label="'Slide ' + (index + 1)"
-    @click="currentIndex = index"
-    ></button>
-  </div>
-
-  <!-- Slides -->
-  <div class="carousel-inner">
-    <div
-    v-for="(img, index) in images"
-    :key="index"
-    :class="['carousel-item', { active: currentIndex === index }]"
+  <div class="carousel-wrapper">
+    <CCarousel
+      controls
+      indicators
+      :active-index="currentIndex"
+      @slide="onSlide"
+      transition="crossfade"
+      class="h-100"
     >
-    <img :src="img.src" :alt="img.alt" class="d-block w-100" />
-    </div>
-  </div>
-
-  <!-- Controles -->
-  <button
-    class="carousel-control-prev"
-    type="button"
-    data-bs-target="#carouselExample"
-    data-bs-slide="prev"
-    @click="prev"
-  >
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button
-    class="carousel-control-next"
-    type="button"
-    data-bs-target="#carouselExample"
-    data-bs-slide="next"
-    @click="next"
-  >
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+      <CCarouselItem
+        v-for="(img, index) in images"
+        :key="index"
+      >
+        <img :src="img.src" :alt="img.alt" class="carousel-img" />
+        <CCarouselCaption>
+          <h5>{{ img.alt }}</h5>
+        </CCarouselCaption>
+      </CCarouselItem>
+    </CCarousel>
   </div>
 </template>
+
+<style scoped>
+.carousel-wrapper {
+  width: 100%;
+  height: 70vh; /* altura máxima de 70% da tela */
+  max-height: 70vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+</style>
