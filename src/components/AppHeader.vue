@@ -24,7 +24,11 @@ onMounted(() => {
 </script>
 
 <template>
-<ImageCarousel v-if="$route.path === '/dashboard'" />
+<!-- <div v-if="$route.path === '/dashboard'"> -->
+<div>
+<ImageCarousel  />
+</div>
+
 
   <CHeader position="sticky" :class="headerClassNames">
     <CContainer class="border-bottom px-4" fluid>
