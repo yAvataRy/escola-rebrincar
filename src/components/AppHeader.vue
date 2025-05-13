@@ -17,32 +17,68 @@ onMounted(() => {
 </script>
 
 <template>
-  
-  <ImageCarousel v-if="$route.path === '/'" />
+  <ImageCarousel v-if="$route.path === '/dashboard'" />
 
   <header :class="headerClassNames">
-    <div class="border-b px-4 py-2">
-      <nav class="hidden md:flex gap-4 text-gray-700 font-medium">
-        <!-- Home -->
-        <RouterLink to="/" class="hover:text-blue-600">Home</RouterLink>
-
-        <!-- Dropdown Sobre -->
-        <div class="relative group">
-          <button class="hover:text-blue-600">Sobre</button>
-          <div class="absolute hidden group-hover:block mt-2 bg-white shadow-md rounded text-sm">
-            <RouterLink to="/historia" class="block px-4 py-2 hover:bg-gray-100">Nossa História</RouterLink>
-            <RouterLink to="/espaco" class="block px-4 py-2 hover:bg-gray-100">Nosso Espaço</RouterLink>
-            <RouterLink to="/eventos" class="block px-4 py-2 hover:bg-gray-100">Eventos Anuais</RouterLink>
-          </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <RouterLink class="navbar-brand" to="/">Home</RouterLink>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <button
+                class="nav-link dropdown-toggle"
+                id="sobreDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Sobre
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="sobreDropdown">
+                <li>
+                  <RouterLink class="dropdown-item" to="/historia">Nossa História</RouterLink>
+                </li>
+                <li>
+                  <RouterLink class="dropdown-item" to="/espaco">Nosso Espaço</RouterLink>
+                </li>
+                <li>
+                  <RouterLink class="dropdown-item" to="/eventos">Eventos Anuais</RouterLink>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <RouterLink class="nav-link" to="/bercario">Berçário</RouterLink>
+            </li>
+            <li class="nav-item">
+              <RouterLink class="nav-link" to="/infantil">Educação Infantil</RouterLink>
+            </li>
+            <li class="nav-item">
+              <RouterLink class="nav-link" to="/fundamental">Educação Fundamental</RouterLink>
+            </li>
+            <li class="nav-item">
+              <RouterLink class="nav-link" to="/diferenciais">Diferenciais</RouterLink>
+            </li>
+            <li class="nav-item">
+              <RouterLink class="nav-link" to="/depoimentos">Depoimentos</RouterLink>
+            </li>
+            <li class="nav-item">
+              <RouterLink class="nav-link" to="/contato">Contato</RouterLink>
+            </li>
+          </ul>
         </div>
-
-        <RouterLink to="/bercario" class="hover:text-blue-600">Berçario</RouterLink>
-        <RouterLink to="/infantil" class="hover:text-blue-600">Educação Infantil</RouterLink>
-        <RouterLink to="/fundamental" class="hover:text-blue-600">Educação Fundamental</RouterLink>
-        <RouterLink to="/diferenciais" class="hover:text-blue-600">Diferenciais</RouterLink>
-        <RouterLink to="/depoimentos" class="hover:text-blue-600">Depoimentos</RouterLink>
-        <RouterLink to="/contato" class="hover:text-blue-600">Contato</RouterLink>
-      </nav>
-    </div>
+      </div>
+    </nav>
   </header>
 </template>

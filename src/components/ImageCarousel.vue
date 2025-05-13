@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 
 const images = [
+  { src: new URL('@/assets/images/image1.png', import.meta.url).href, alt: 'Imagem 1' },
   { src: new URL('@/assets/images/image2.png', import.meta.url).href, alt: 'Imagem 2' },
   { src: new URL('@/assets/images/image3.png', import.meta.url).href, alt: 'Imagem 3' },
   { src: new URL('@/assets/images/image4.png', import.meta.url).href, alt: 'Imagem 4' },
@@ -19,44 +20,53 @@ const prev = () => {
 </script>
 
 <template>
-  <div class="relative w-full max-w-4xl mx-auto overflow-hidden">
-    <!-- Slides -->
-    <div class="flex transition-transform duration-700 ease-in-out" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
-      <div
-        v-for="(img, index) in images"
-        :key="index"
-        class="w-full flex-shrink-0"
-      >
-        <img :src="img.src" :alt="img.alt" class="w-full h-96 object-cover rounded-lg" />
-      </div>
-    </div>
-
-    <!-- Indicadores -->
-    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
-      <button
-        v-for="(img, index) in images"
-        :key="index"
-        @click="currentIndex = index"
-        :class="{
-          'w-3 h-3 rounded-full bg-white': true,
-          'opacity-50': currentIndex !== index,
-          'opacity-100 ring-2 ring-white': currentIndex === index
-        }"
-      ></button>
-    </div>
-
-    <!-- Controles -->
+  <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+  <!-- Indicadores -->
+  <div class="carousel-indicators">
     <button
-      @click="prev"
-      class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-30 text-white p-2 rounded-full hover:bg-opacity-50"
+    v-for="(img, index) in images"
+    :key="index"
+    type="button"
+    :data-bs-target="'#carouselExample'"
+    :data-bs-slide-to="index"
+    :class="{ active: currentIndex === index }"
+    aria-current="currentIndex === index ? 'true' : undefined"
+    aria-label="'Slide ' + (index + 1)"
+    @click="currentIndex = index"
+    ></button>
+  </div>
+
+  <!-- Slides -->
+  <div class="carousel-inner">
+    <div
+    v-for="(img, index) in images"
+    :key="index"
+    :class="['carousel-item', { active: currentIndex === index }]"
     >
-      ‹
-    </button>
-    <button
-      @click="next"
-      class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-30 text-white p-2 rounded-full hover:bg-opacity-50"
-    >
-      ›
-    </button>
+    <img :src="img.src" :alt="img.alt" class="d-block w-100" />
+    </div>
+  </div>
+
+  <!-- Controles -->
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#carouselExample"
+    data-bs-slide="prev"
+    @click="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#carouselExample"
+    data-bs-slide="next"
+    @click="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
   </div>
 </template>
