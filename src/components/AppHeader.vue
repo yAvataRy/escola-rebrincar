@@ -29,9 +29,9 @@ onMounted(() => {
   <CHeader position="sticky" :class="headerClassNames">
     <CContainer class="border-bottom px-4" fluid>
       <CHeaderNav class="d-none d-md-flex">
-        <CNavItem>
+        <div>
           <router-link class="router-link" to="/dashboard"> Home </router-link>
-        </CNavItem>
+        </div>
         <CDropdown variant="nav-item" placement="bottom-end">
           <CDropdownToggle class="router-link" :caret="false"> Sobre
           </CDropdownToggle>
