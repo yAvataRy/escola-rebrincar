@@ -85,7 +85,7 @@ const getRoute = () => {
             <sidenav-item
           to="/fundamental"
           :class="getRoute() === 'billing' ? 'active' : ''"
-          :navText="isRTL ? 'الفواتیر' : 'Billing'"
+          :navText="isRTL ? 'الفواتیر' : 'Fundamental'"
         >
           <template v-slot:icon>
             <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
