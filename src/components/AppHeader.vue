@@ -16,7 +16,7 @@ onMounted(() => {
   document.addEventListener('scroll', () => {
     if (document.documentElement.scrollTop > 0) {
       headerClassNames.value = 'mb-4 p-0 shadow-sm'
-    } else {
+    } else {main 
       headerClassNames.value = 'mb-4 p-0'
     }
   })
@@ -24,8 +24,8 @@ onMounted(() => {
 </script>
 
 <template>
-<!-- <div v-if="$route.path === '/dashboard'"> -->
-<div>
+<div v-if="$route.path === '/dashboard'">
+
 <ImageCarousel  />
 </div>
 
