@@ -12,15 +12,13 @@ const store = useStore();
             :class="store.state.isRTL ? 'text-lg-end' : 'text-lg-start'"
           >
             ©
-            {{ new Date().getFullYear() }}, made with
-            <i class="fa fa-heart"></i> by
+            {{ new Date().getFullYear() }}, made by
             <a
-              href="https://www.creative-tim.com"
+              href="https://www.instagram.com/bravvaglowmkt/"
               class="font-weight-bold"
               target="_blank"
-              >Creative Tim</a
+              >Bravva Glow Marketing</a
             >
-            for a better web.
           </div>
         </div>
         <div class="col-lg-6">
@@ -32,7 +30,7 @@ const store = useStore();
                 href="https://www.creative-tim.com"
                 class="nav-link text-muted"
                 target="_blank"
-                >Creative Tim</a
+                >Brava Glow MKT</a
               >
             </li>
             <li class="nav-item">
@@ -40,7 +38,7 @@ const store = useStore();
                 href="https://www.creative-tim.com/presentation"
                 class="nav-link text-muted"
                 target="_blank"
-                >About Us</a
+                >Sobre Nós</a
               >
             </li>
             <li class="nav-item">
@@ -51,12 +49,20 @@ const store = useStore();
                 >Blog</a
               >
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a
                 href="https://www.creative-tim.com/license"
                 class="nav-link pe-0 text-muted"
                 target="_blank"
                 >License</a
+              >
+            </li> -->
+            <li class="nav-item">
+              <a
+                href="LINK PARA LICENCIAS"
+                class="nav-link pe-0 text-muted"
+                target="_blank"
+                >Licença</a
               >
             </li>
           </ul>
