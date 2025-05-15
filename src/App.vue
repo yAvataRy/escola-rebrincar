@@ -81,4 +81,4 @@ const toggleConfigurator = () => store.commit("toggleConfigurator");
       />
     </div>
   </main>
-</template>
+</template> 

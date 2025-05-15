@@ -12,6 +12,33 @@ commit/main:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # SRC_IMG := public/img/icons/symbol.png
 # DEST_DIR := public/img/icons
 # FAVICON_DIR := public
